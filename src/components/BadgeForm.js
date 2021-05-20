@@ -21,7 +21,7 @@ class BadgeForm extends Component {
    * en el componente donde se coloco
    * @param {Object} e Hace referencia al evento
    */
-  handleChange = (e) => {
+  // props.onChange = (e) => {
     /**
      *
      * @typedef {Object} events
@@ -32,16 +32,16 @@ class BadgeForm extends Component {
      * Permite capturar el nombre del input y su valor
      * para luego mandar este objeto al state
      * @type events */
-    let events = {
-      [e.target.name]: e.target.value,
-    };
+    // let events = {
+    //   [e.target.name]: e.target.value,
+    // };
     /**
      * Ingresamos el objeto event en el estado
      * para almacenar la informacion temporalmente
      */
-    this.setState(events);
-    console.log(events);
-  };
+  //   this.setState(events);
+  //   console.log(events);
+  // };
   /**
    * Permite disparar la logica que queremos
    * llevar a cabo cuando se presione el boton enviar
@@ -70,42 +70,42 @@ class BadgeForm extends Component {
           <div className="mb-3">
             <label className="form-label">First Name</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               name="firstName"
               type="text"
-              value={this.state.firstName}
+              value={this.props.formValues.firstName}
             />
           </div>
           <div className="mb-3">
             <label className="form-label">Last Name</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               name="lastName"
               type="text"
-              value={this.state.lastName}
+              value={this.props.formValues.lastName}
               
             />
           </div>
           <div className="mb-3">
             <label className="form-label">Job Title</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               name="jobTitle"
               type="text"
-              value={this.state.jobTitle}
+              value={this.props.formValues.jobTitle}
             />
           </div>
           <div className="mb-3">
             <label className="form-label">Twitter</label>
             <input
-              onChange={this.handleChange}
+              onChange={this.props.onChange}
               className="form-control"
               name="twitter"
               type="text"
-              value={this.state.twitter}
+              value={this.props.formValues.twitter}
             />
           </div>
           <button onClick={this.handleClick} className="btn btn-primary">

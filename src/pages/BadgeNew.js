@@ -5,13 +5,20 @@ import Navbar from "../components/Navbar";
 import header from "../images/badge-header.svg";
 import "./styles/BadgeNew.css";
 class BadgeNew extends Component {
+  state = {
+    form: {
+      firstName: "",
+      lastName: "",
+      jobTitle: "",
+      twitter: "",
+    },
+  };
+  handleChange = (e) => {
+    this.setState({
+      form: { ...this.state.form, [e.target.name]: e.target.value },
+    });
+  };
   render() {
-    const user = {
-      firstName: "Joseph",
-      lastName: "Morales",
-      jobTitle: "Frontend && Backend Developer",
-      twitter: "joseph_moraless",
-    };
     return (
       <React.Fragment>
         <div>
@@ -23,10 +30,10 @@ class BadgeNew extends Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <Badge user={user} />
+              <Badge user={{...this.state.form}} />
             </div>
             <div className="col">
-              <BadgeForm />
+              <BadgeForm onChange={this.handleChange} formValues={this.state.form}/>
             </div>
           </div>
         </div>
