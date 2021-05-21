@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
-import Navbar from "../components/Navbar";
 import header from "../images/badge-header.svg";
 import "./styles/BadgeNew.css";
 class BadgeNew extends Component {
@@ -21,19 +20,19 @@ class BadgeNew extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <Navbar />
-        </div>
         <div className="BadgeNew__hero">
           <img src={header} className="img-fluid" alt="logo" />
         </div>
         <div className="container">
           <div className="row">
             <div className="col">
-              <Badge user={{...this.state.form}} />
+              <Badge user={{ ...this.state.form }} />
             </div>
             <div className="col">
-              <BadgeForm onChange={this.handleChange} formValues={this.state.form}/>
+              <BadgeForm
+                onChange={this.handleChange}
+                formValues={this.state.form}
+              />
             </div>
           </div>
         </div>

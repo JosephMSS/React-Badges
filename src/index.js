@@ -19,8 +19,8 @@ import React from "react";
  * Es el encargado de incrustar el nuevo elemento al DOM
  *
  */
-import  BadgeNew from "./pages/BadgeNew";
-import  Badges from "./pages/Badges";
+
+import App from "../src/components/App";
 import ReactDOM from "react-dom";
 /**
  * El nuevo elemento __qué__ queremos agregar
@@ -47,4 +47,4 @@ const container = document.getElementById("app");
  * el componente por medio de los props
  * 
  */
-ReactDOM.render(<Badges/>, container);
+ReactDOM.render(<App/>, container);
