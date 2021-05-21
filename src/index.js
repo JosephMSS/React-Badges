@@ -20,6 +20,7 @@ import React from "react";
  *
  */
 import  BadgeNew from "./pages/BadgeNew";
+import  Badges from "./pages/Badges";
 import ReactDOM from "react-dom";
 /**
  * El nuevo elemento __qué__ queremos agregar
@@ -46,4 +47,4 @@ const container = document.getElementById("app");
  * el componente por medio de los props
  * 
  */
-ReactDOM.render(<BadgeNew/>, container);
+ReactDOM.render(<Badges/>, container);
