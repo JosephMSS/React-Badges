@@ -14,7 +14,7 @@ class BadgeForm extends Component {
     firstName: "",
     lastName: "",
     jobTitle: "",
-    twitter: "@twitter",
+    twitter: "",
   };
   /**
    * Se encarga de manejar los cambios
@@ -66,7 +66,7 @@ class BadgeForm extends Component {
     return (
       <React.Fragment>
         <h1>New Attendant</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="mb-3">
             <label className="form-label">First Name</label>
             <input
@@ -96,6 +96,16 @@ class BadgeForm extends Component {
               name="jobTitle"
               type="text"
               value={this.props.formValues.jobTitle}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input
+              onChange={this.props.onChange}
+              className="form-control"
+              name="email"
+              type="text"
+              value={this.props.formValues.email}
             />
           </div>
           <div className="mb-3">

@@ -1,37 +1,58 @@
-import React, { Component } from "react";
-import "./styles/BadgeList.css";
-import twitterLogo from "../images/gorjeo.svg";
-export default class BadgesList extends Component {
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './styles/BadgesList.css';
+
+class BadgesListItem extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <ul className="list-unstyled">
-          {this.props.badges.map((badge) => {
-            return (
-              <div className="mb-2 card" key={badge.id}>
-                <div className="d-flex flex-column my-3 flex-md-row m-md-3">
-                  <div className="align-self-center">
-                    <img
-                      className="rounded-circle"
-                      src={badge.avatarUrl}
-                      alt={`${badge.lastName}_Avatar`}
-                    />
-                  </div>
-                  <div className="d-flex flex-column align-items-center align-items-md-start p-md-3 ">
-                    <div className="fs-5 fw-bold">
-                      {badge.firstName} {badge.lastName}
-                    </div>
-                    <div className="fs-6">{badge.jobTitle}</div>
-                    <div className="row">
-                      <div className="fs-6 col">@{badge.twitter}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </ul>
-      </React.Fragment>
+      <div className="BadgesListItem">
+        <img
+          className="BadgesListItem__avatar"
+          src={this.props.badge.avatarUrl}
+          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
+        />
+
+        <div>
+          <strong>
+            {this.props.badge.firstName} {this.props.badge.lastName}
+          </strong>
+          <br />@{this.props.badge.twitter}
+          <br />
+          {this.props.badge.jobTitle}
+        </div>
+      </div>
     );
   }
 }
+
+class BadgesList extends React.Component {
+  render() {
+    if (this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found</h3>
+          <Link className="btn btn-primary" to="/badges/new">
+            Create new badge
+          </Link>
+        </div>
+      );
+    }
+
+    return (
+      <div className="BadgesList">
+        <ul className="list-unstyled">
+          {this.props.badges.map(badge => {
+            return (
+              <li key={badge.id}>
+                <BadgesListItem badge={badge} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default BadgesList;

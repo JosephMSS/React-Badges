@@ -364,7 +364,7 @@
       "id": "ec9c5695-3a42-45ef-a273-d4c80c0e8f27",
       "firstName": "Zoey",
       "lastName": "Wiegand",
-      "email": "Friedrich_OConner35@yahoo.com",
+      "email": " @yahoo.com",
       "jobTitle": "Future Accounts Technician",
       "twitter": "ZoeyWiegand43509",
       "avatarUrl": "https://www.gravatar.com/avatar/82d4628e093cad1bdcfb24e5eecd815d?d=identicon"
@@ -440,6 +440,14 @@
       "jobTitle": "Lawyer",
       "twitter": "ckaufmanpr",
       "id": "npaYZKI"
+    },
+    {
+      "firstName": "Joseph",
+      "lastName": "Silva",
+      "jobTitle": "Developer",
+      "twitter": "moraless",
+      "email": "josephmss2799@gmail.com",
+      "id": "iIrS40I"
     }
   ]
 }
