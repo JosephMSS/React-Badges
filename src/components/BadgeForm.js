@@ -3,11 +3,11 @@ class BadgeForm extends Component {
   /**
    * Inicializamos el estado, esto nos permite poder leer del estado con
    * **this.state.[variable que queremos leer]**
-   * Inicializar las variables permite pasar 
-   * el state de no controlado a 
-   * controlado, tambien se 
-   * puede inicializar 
-   * como un objeto 
+   * Inicializar las variables permite pasar
+   * el state de no controlado a
+   * controlado, tambien se
+   * puede inicializar
+   * como un objeto
    * vacio {}
    */
   state = {
@@ -22,23 +22,23 @@ class BadgeForm extends Component {
    * @param {Object} e Hace referencia al evento
    */
   // props.onChange = (e) => {
-    /**
-     *
-     * @typedef {Object} events
-     * @property {String} name Es el nombre del input
-     * @property {String} value El valor que tiene el input cada vez que cambia
-     */
-    /**
-     * Permite capturar el nombre del input y su valor
-     * para luego mandar este objeto al state
-     * @type events */
-    // let events = {
-    //   [e.target.name]: e.target.value,
-    // };
-    /**
-     * Ingresamos el objeto event en el estado
-     * para almacenar la informacion temporalmente
-     */
+  /**
+   *
+   * @typedef {Object} events
+   * @property {String} name Es el nombre del input
+   * @property {String} value El valor que tiene el input cada vez que cambia
+   */
+  /**
+   * Permite capturar el nombre del input y su valor
+   * para luego mandar este objeto al state
+   * @type events */
+  // let events = {
+  //   [e.target.name]: e.target.value,
+  // };
+  /**
+   * Ingresamos el objeto event en el estado
+   * para almacenar la informacion temporalmente
+   */
   //   this.setState(events);
   //   console.log(events);
   // };
@@ -85,7 +85,6 @@ class BadgeForm extends Component {
               name="lastName"
               type="text"
               value={this.props.formValues.lastName}
-              
             />
           </div>
           <div className="mb-3">
@@ -121,6 +120,9 @@ class BadgeForm extends Component {
           <button onClick={this.handleClick} className="btn btn-primary">
             Save
           </button>
+          {this.props.error && (
+            <p className="text-danger">{this.props.error.message}</p>
+          )}
         </form>
       </React.Fragment>
     );

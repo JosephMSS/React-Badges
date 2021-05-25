@@ -30,12 +30,15 @@ export default class Badges extends Component {
        *
        */
       const data = await api.badges.list(); //inicializacion de datos
+      const badgeList=[...data].reverse()
+      console.log(badgeList);
       /**
        * Se realiza la carga de datos
        * y ya no esta en estado
        * de carga
        */
-      this.setState({ data: data, loading: false });
+
+      this.setState({ data: badgeList, loading: false });
     } catch (error) {
       /**
        * La carga de datos es fallida

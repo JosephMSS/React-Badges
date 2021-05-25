@@ -10,6 +10,7 @@ export default function App() {
       <Layout>
         <Switch>
           <Route exact path="/badges" component={Badges} />
+          <Route exact path="/" component={Badges} />
           <Route exact path="/badges/new" component={BadgeNew} />
           <Route path="/404" component={Error404} />
           <Redirect from="*" to="/404" />
