@@ -4,10 +4,10 @@ import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 import Loader from "../components/Loader";
 import header from "../images/badge-header.svg";
-import "./styles/BadgeNew.css";
-class BadgeNew extends Component {
+import "./styles/BadgeEdit.css";
+class BadgeEdit extends Component {
   state = {
-    loading: false,
+    loading: true,
     error: null,
     form: {
       firstName: "",
@@ -28,9 +28,23 @@ class BadgeNew extends Component {
     this.setState({ loading: true, error: null });
 
     try {
-      await api.badges.create(this.state.form);
+      const { badgeId } = this.props.match.params;
+      await api.badges.update(badgeId,this.state.form);
       this.setState({ loading: false });
       this.props.history.push("/badges");
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
+  componentDidMount() {
+    this.fetchData();
+  }
+  fetchData = async (e) => {
+    try {
+      this.setState({ loading: true, error: null });
+      const { badgeId } = this.props.match.params;
+      const data = await api.badges.read(badgeId);
+      this.setState({ form: data, loading: false });
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
@@ -41,7 +55,7 @@ class BadgeNew extends Component {
     }
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img src={header} className="img-fluid" alt="logo" />
         </div>
         <div className="container">
@@ -56,8 +70,7 @@ class BadgeNew extends Component {
               />
             </div>
             <div className="col">
-              <h1>New Attendant</h1>
-
+              <h1>Edit Attendant</h1>
               <BadgeForm
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
@@ -71,4 +84,4 @@ class BadgeNew extends Component {
     );
   }
 }
-export default BadgeNew;
+export default BadgeEdit;

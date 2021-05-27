@@ -8,7 +8,7 @@ class Navbar extends Component {
       <React.Fragment>
         <div className="Navbar">
           <div className="container-fluid">
-            <Link className='Navbar__brand' to="/">
+            <Link className='Navbar__brand text-decoration-none' to="/">
               <img className='Navbar__brand-logo' src={logo} alt="logo" />
               <span className="fw-light">Platzi</span>
             <span className="fw-bold">Conf</span>

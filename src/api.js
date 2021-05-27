@@ -40,6 +40,8 @@ const api = {
       return callApi(`/badges/${badgeId}`);
     },
     update(badgeId, updates) {
+      // throw new Error("500 server error");
+
       return callApi(`/badges/${badgeId}`, {
         method: "PUT",
         body: JSON.stringify(updates),
