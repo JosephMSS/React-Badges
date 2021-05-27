@@ -6,7 +6,7 @@ import "./styles/Badges.css";
 import api from "../api";
 import Loader from "../components/Loader";
 import PageError from "../components/PageError";
-
+import MiniLoader from "./MiniLoader";
 export default class Badges extends Component {
   state = {
     loading: true,
@@ -15,6 +15,7 @@ export default class Badges extends Component {
   };
   componentDidMount() {
     this.fetchData();
+    this.intervalId=setInterval(this.fetchData, 5000);
   }
   /**
    * Carga los datos por medio de una peticion
@@ -30,7 +31,7 @@ export default class Badges extends Component {
        *
        */
       const data = await api.badges.list(); //inicializacion de datos
-      const badgeList=[...data].reverse()
+      const badgeList = [...data].reverse();
       console.log(badgeList);
       /**
        * Se realiza la carga de datos
@@ -48,8 +49,9 @@ export default class Badges extends Component {
       this.setState({ loading: false, error: error });
     }
   };
+
   render() {
-    if (this.state.loading) {
+    if (this.state.loading && !this.state.data) {
       return <Loader />;
     }
     if (this.state.error) {
@@ -73,6 +75,7 @@ export default class Badges extends Component {
           <div className="BadgesList">
             <div className="Badges__container">
               <BadgesList badges={this.state.data} />
+              {this.state.loading&&<MiniLoader/>}
             </div>
           </div>
         </div>
